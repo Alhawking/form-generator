@@ -28,7 +28,7 @@ export default class Field{
             span.textContent = '*';
             label.appendChild(span)
         }else{
-            input.addEventListener('blur',e=>e.target.value?e.target.classList.add('input-good'):e.target.classList.remove('input-good'));
+            input.addEventListener('blur',e=>this.validateEntry(e));
         }
         div.appendChild(label);
         div.appendChild(input);
@@ -64,12 +64,17 @@ export default class Field{
     }
     validateEmail(e){   
         const regexMail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if(!regexMail.test(e.target.value)){
+        if(!regexMail.test(e.target.value) && this.required){
             UI.showMessage(`Debes colocar un email válido 😅`, this.name);
             e.target.classList.add('input-error');
             e.target.classList.remove('input-good');
             e.target.dataset.error='true';
-        }else{
+        }else if(!regexMail.test(e.target.value) && !this.required && e.target.value){
+            UI.showMessage(`Debes colocar un email válido 😅`, this.name);
+            e.target.classList.add('input-error');
+            e.target.classList.remove('input-good');
+            e.target.dataset.error='true';
+        }else if(!this.required && e.target.value){
             e.target.classList.remove('input-error');
             e.target.classList.add('input-good');
             e.target.dataset.error='false';
@@ -77,23 +82,28 @@ export default class Field{
     }
     validatePhone(e){
         const regexPhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-        if(!regexPhone.test(e.target.value)){
+        if(!regexPhone.test(e.target.value) && this.required){
             UI.showMessage(`Debes colocar un teléfono válido 😅`, this.name);
             e.target.classList.add('input-error');
             e.target.classList.remove('input-good');
             e.target.dataset.error='true';
-        }else{
+        }else if(!regexPhone.test(e.target.value) && !this.required && e.target.value){
+            UI.showMessage(`Debes colocar un teléfono válido 😅`, this.name);
+            e.target.classList.add('input-error');
+            e.target.classList.remove('input-good');
+            e.target.dataset.error='true';
+        }else if(!this.required && e.target.value){
             e.target.classList.remove('input-error');
             e.target.classList.add('input-good');
             e.target.dataset.error='false';
         }
     }
     validateText(e){
-        if(!e.target.value){
+        if(!e.target.value && this.required){
             UI.showMessage(`El campo ${this.label} es obligatorio 😅`,this.name);
             e.target.classList.add('input-error');
             e.target.classList.remove('input-good');
-        }else{
+        }else if(!this.required && e.target.value){
             e.target.classList.remove('input-error');
             e.target.classList.add('input-good');
         }
