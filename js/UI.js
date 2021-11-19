@@ -29,17 +29,11 @@ export default class UI{
         spinner.style.display = 'flex';
         insertInto.appendChild(spinner);
     }
-    showMessage(message, insertBefore, isError = true){
-        const p = document.createElement('p');
-        p.textContent = message;
-        const div = document.createElement('div');
-        div.appendChild(p);
-        if (isError) {
-            div.classList.add('error');
-        } else {
-            div.classList.add('message');
-        }
-        document.querySelector('form').insertBefore(div, insertBefore);
-        setTimeout(() => div.remove(), 5000)
+    showMessage(message, fieldName){
+        const div = document.querySelector(`#alert-${fieldName}`);
+        div.style.animation = 'message 1s';
+        div.classList.remove('d-none');
+        div.querySelector('div').textContent = message;
+        setTimeout(() =>div.classList.add('d-none'),5000);
     }
 }

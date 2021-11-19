@@ -273,20 +273,22 @@ select {
 }
 
 .input-error {
-  border: solid 1.5px red !important;
+  border: solid 1.5px #dc3545 !important;
 }
 
 .input-good {
-  border: solid 1.5px #5cb85c !important;
+  border: solid 1.5px #198754 !important;
 }
 
 @keyframes message {
   from {
+    opacity: 0;
     height: 0;
     margin-left: 100%;
     width: 100%;
   }
   to {
+    opacity: 1;
     margin-left: 0%;
     width: 100%;
     height: auto;
