@@ -295,6 +295,21 @@ select {
   }
 }
 
+@keyframes message-out {
+  from {
+    opacity: 1;
+    margin-left: 0%;
+    width: 100%;
+    height: auto;
+  }
+  to {
+    opacity: 0;
+    height: 0;
+    margin-left: 100%;
+    width: 100%;
+  }
+}
+
 /*Thank you and error pages*/
 
 .header {

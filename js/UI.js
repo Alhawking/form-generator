@@ -34,6 +34,19 @@ export default class UI{
         div.style.animation = 'message 1s';
         div.classList.remove('d-none');
         div.querySelector('div').textContent = message;
-        setTimeout(() =>div.classList.add('d-none'),5000);
+        setTimeout(() => {
+            div.style.animation = 'message-out 1s'
+            setTimeout(() => {
+                div.classList.add('d-none');
+            }, 500);
+        },5000);
+    }
+    showMessageAt(message,id){
+        const input = document.querySelector(`#${id}`);
+        input.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        })
+        this.showMessage(message,id);
     }
 }

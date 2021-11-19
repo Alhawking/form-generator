@@ -38,13 +38,13 @@ export default class Field{
     validate(){
         const input = document.getElementsByName(this.name)[0];
         if(!input.value && this.required){
-            UI.showMessage(`El campo ${this.label} es obligatorio`,document.querySelector('button[type="submit"]'));
+            UI.showMessageAt(`El campo ${this.label} es obligatorio`,this.name);
             return true;
         }else if(input.type === 'email' && input.dataset.error ==='true'){
-            UI.showMessage(`Introduce un email válido`,document.querySelector('button[type="submit"]'));
+            UI.showMessageAt(`El campo ${this.label} es obligatorio`,this.name);
             return true;
         }else if(input.type === 'tel' && input.dataset.error ==='true'){
-            UI.showMessage(`Introduce un teléfono válido`,document.querySelector('button[type="submit"]'));
+            UI.showMessageAt(`El campo ${this.label} es obligatorio`,this.name);
             return true;
         }else{
             return false

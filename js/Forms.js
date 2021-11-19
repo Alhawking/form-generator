@@ -29,16 +29,16 @@ export default class Form {
         form.addEventListener('submit',e=>{
             e.preventDefault();
             const errors = [];
-            this.fields.forEach(field=>errors.push(field.validate()));
-            if(!errors.some(isError=>isError)){  
-                this.fields.forEach(field=>{
-                    if(field.type === undefined){
-                        field.fillField();
-                    }
-                });
-                UI.spinner(document.querySelector('form'));
-                form.submit();
-            }
+            this.fields.every(field=>!field.validate());
+            // if(!errors.some(isError=>isError)){  
+            //     this.fields.forEach(field=>{
+            //         if(field.type === undefined){
+            //             field.fillField();
+            //         }
+            //     });
+            //     UI.spinner(document.querySelector('form'));
+            //     form.submit();
+            // }
         })
     }
 }
