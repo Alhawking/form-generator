@@ -78,6 +78,10 @@ export default class Field{
             e.target.classList.remove('input-error');
             e.target.classList.add('input-good');
             e.target.dataset.error='false';
+        }else{
+            e.target.classList.remove('input-error');
+            e.target.classList.add('input-good');
+            e.target.dataset.error='false';
         }
     }
     validatePhone(e){
@@ -96,6 +100,10 @@ export default class Field{
             e.target.classList.remove('input-error');
             e.target.classList.add('input-good');
             e.target.dataset.error='false';
+        }else{
+            e.target.classList.remove('input-error');
+            e.target.classList.add('input-good');
+            e.target.dataset.error='false';
         }
     }
     validateText(e){
@@ -106,6 +114,10 @@ export default class Field{
         }else if(!this.required && e.target.value){
             e.target.classList.remove('input-error');
             e.target.classList.add('input-good');
+        }else{
+            e.target.classList.remove('input-error');
+            e.target.classList.add('input-good');
+            e.target.dataset.error='false';
         }
     }
 }
